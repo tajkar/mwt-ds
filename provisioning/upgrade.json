@@ -13,7 +13,7 @@
     }
   },
   "variables": {
-    "assetLocation": "https://raw.githubusercontent.com/Microsoft/mwt-ds/master/provisioning/",
+    "assetLocation": "https://raw.githubusercontent.com/tajkar/mwt-ds/master/provisioning/",
     "prefix": "[replace(replace(replace(replace(resourceGroup().name, '.', 'x'), '_', 'x'), ')', 'x'), '(', 'x')]"
   },
   "resources": [
