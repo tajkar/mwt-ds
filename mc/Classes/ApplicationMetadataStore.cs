@@ -119,7 +119,7 @@ namespace DecisionServicePrivateWeb.Classes
             {
                 telemetry.TrackException(ex);
             }
-            
+
         }
 
         public static string CreateOnlineTrainerCspkgBlobIfNotExists(string cspkgLink)
@@ -134,7 +134,8 @@ namespace DecisionServicePrivateWeb.Classes
             if (!cspkgBlob.Exists())
             {
                 telemetry.TrackTrace("Online Trainer Package blob not found, creating new one.");
-
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 armDeployContainer.CreateIfNotExists();
                 using (var wc = new WebClient())
                 using (var cspkgStream = new MemoryStream(wc.DownloadData(cspkgLink)))
